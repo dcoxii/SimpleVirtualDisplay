@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.kangrio.virtualdisplay"
-        minSdk = 23
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
