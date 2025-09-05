@@ -8,7 +8,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.kangrio.virtualdisplay"
+        applicationId = "com.dcoxii.virtualdisplay"
         minSdk = 28
         targetSdk = 34
         versionCode = 1
