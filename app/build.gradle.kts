@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.kangrio.virtualdisplay"
+    namespace = "com.dcoxii.virtualdisplay"
     compileSdk = 34
 
     defaultConfig {
@@ -18,44 +18,36 @@ android {
         signingConfig = signingConfigs.getByName("debug")
     }
 
-    buildTypes {
+        buildTypes {
         release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-            signingConfig = signingConfigs.getByName("debug")
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = '1.8'
     }
-    buildFeatures {
-        buildConfig = true
+
+    viewBinding {
+        enabled = true
     }
 }
 
 dependencies {
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.6.0'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-//    val shizuku_version = "13.1.5"
-    val shizuku_version = "13.1.0"
-    implementation ("dev.rikka.shizuku:api:$shizuku_version")
+    // Kotlin Coroutine
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+    implementation 'androidx.core:core-ktx:+'
 
-// Add this line if you want to support Shizuku
-    implementation ("dev.rikka.shizuku:provider:$shizuku_version")
-    implementation("org.lsposed.hiddenapibypass:hiddenapibypass:4.3")
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    def lifecycle_version = "2.5.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 }
